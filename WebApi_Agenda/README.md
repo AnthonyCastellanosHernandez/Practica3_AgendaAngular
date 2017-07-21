@@ -1,4 +1,9 @@
 
+## Instalación:
+
+1. `cd WebApi_Agenda`.
+2. `npm install`.
+
 
 ## Ejecutar la aplicacion
-Para ejecutar la aplicacion utilizar el comando `npm start` o tambien `node app.js`.
+Para ejecutar la aplicacion se debe utilizar `npm start` o `node app.js`.
