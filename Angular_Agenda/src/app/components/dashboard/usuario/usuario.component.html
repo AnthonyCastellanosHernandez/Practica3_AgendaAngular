@@ -1,0 +1,61 @@
+
+<div class="row">
+  <div class="page-header">
+    <h1>Lista de Usuarios:</h1>
+    <button type="button" class="btn btn-warning waves-effect" data-toggle="modal" data-target="#modalUsuario">
+        Agregar
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4" align="center" *ngFor="let s of usuarioService.usuarios">
+                <div class="card text-xs-left">
+                      <h4 class="card-title" align="left"> {{ s.idUsuario}}</h4>
+                      <img class="card-img-center" style="width: 9rem;" src="http://obsiumcr.com/iconos/usuario.png" alt="Card image cap">
+                      <div class="card-block">
+                      <h4 class="card-title" align="center">Nick: {{ s.nick}}</h4>
+                      <h4 class="card-title" align="center">Contraseña: {{ s.contrasena}}</h4>
+                      <div class="formGroup">
+                      <button (click)="eliminar(s.idUsuario)" class="btn btn-danger" name="eliminar">Eliminar</button>
+                      <button type="button" class="btn btn-primary waves-effect" data-toggle="modal" data-target="#modalUsuario">
+                          Modificar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade bd-example-modal-lg" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <form [formGroup]="nuevoUsuario" (ngSubmit)="agregarUsuario()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Agregar Usuario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group ">
+            <label for="nick" >Nick:</label>
+              <input type="text" class="form-control" id="nick" placeholder="Ingrese su nick" formControlName="nick">
+          </div>
+          <div class="form-group">
+            <label for="contrasena">Contraseña:</label>
+              <input type="password" class="form-control" id="contrasena" placeholder="Ingrese su contraseña" formControlName="contrasena">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="submit"  class="btn btn-primary" >Guardar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

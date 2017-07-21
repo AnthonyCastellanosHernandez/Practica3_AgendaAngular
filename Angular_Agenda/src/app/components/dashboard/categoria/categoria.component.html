@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="page-header">
+    <h1>Lista de categorias:</h1>
+    <button align="right" type="button" class="btn btn-success waves-effect" data-toggle="modal" data-target="#modalCategoria">
+        Agregar
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4" align="center" *ngFor="let cate of categoriaService.categorias">
+            <div class="card text-xs-left">
+                  <h4 class="card-title" align="left"> {{ cate.idCategoria}}</h4>
+                  <img class="card-img-center" style="width: 9rem;" src="http://icon-icons.com/icons2/1147/PNG/512/1486486297-attribute-category-label-shop-price-price-tag-tag_81213.png" alt="Card image cap">
+                  <div class="card-block">
+                  <h4 class="card-title" align="center"> {{ cate.nombreCategoria}}</h4>
+                  <div class="formGroup">
+                  <button (click)="eliminar(cate.idCategoria)" class="btn btn-danger" name="eliminar">Eliminar</button>
+                    <button type="button" class="btn btn-primary waves-effect" data-toggle="modal" data-target="#modalCategoria">Modificar
+                  </button>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="modalCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <form [formGroup]="formularioCategoria" (ngSubmit)="agregarCategoria()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Categoria</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group ">
+            <label for="nombreCategoria" >Nombre:</label>
+              <input type="text" class="form-control" id="nombreCategoria" placeholder="Ingrese su categoria" formControlName="nombreCategoria">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="submit" onclick="location.href = 'http://localhost:4200/dashboard/categoria';" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
